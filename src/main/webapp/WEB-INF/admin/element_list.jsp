@@ -8,8 +8,8 @@
 
     <%@include file="sidemenu.jsp" %>
 
-    <div id="main-wrapper" class="col-md-11 pull-right">
-        <div class="col-lg-8 col-md-7 col-sm-6">
+    <div id="main-wrapper" class="col-xs-10">
+        <div class="">
 
             <table class="table table-striped table-hover ">
                 <thead>

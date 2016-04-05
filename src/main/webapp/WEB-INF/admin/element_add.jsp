@@ -8,8 +8,8 @@
 
     <%@include file="sidemenu.jsp" %>
 
-    <div id="main-wrapper" class="col-md-11 pull-right">
-        <div class="col-lg-8 col-md-7 col-sm-6">
+    <div id="main-wrapper" class="col-xs-10 ">
+        <div class="col-xs-8">
 
         <form:form class="form-horizontal" modelAttribute="elementVO" action="/admin/element" method="post">
             <fieldset>
@@ -40,6 +40,28 @@
 
         </form:form>
 
+        </div>
+
+        <div class="col-xs-4">
+            <div class="${successAlert == null ? 'hidden' : successAlert}">
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                </div>
+            </div>
+            <div class="${warningAlert == null ? 'hidden' : warningAlert}">
+                <div class="alert alert-dismissible alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Warning!</h4>
+                    <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
+                </div>
+            </div>
+            <div class="${errorAlert == null ? 'hidden' : errorAlert}">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+                </div>
+            </div>
         </div>
     </div>
 

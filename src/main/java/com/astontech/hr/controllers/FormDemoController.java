@@ -44,7 +44,7 @@ public class FormDemoController {
 
     @ModelAttribute("singleList")
     private List<String> buildSingleDropdownList() {
-        List<String> singleList = new ArrayList<>();
+        List<String> singleList = new ArrayList<String>();
         singleList.add("1");
         singleList.add("2");
         singleList.add("3");
