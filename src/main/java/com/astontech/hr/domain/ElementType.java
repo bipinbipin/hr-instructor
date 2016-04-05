@@ -17,19 +17,19 @@ public class ElementType {
     @Version
     private Integer version;
 
-    private String elementType;
+    private String elementTypeName;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Element> elementList;
 
     public ElementType() {}
 
-    public ElementType(String elementType) {
-        this.setElementType(elementType);
+    public ElementType(String elementTypeName) {
+        this.setElementTypeName(elementTypeName);
     }
 
-    public ElementType(String elementType, List<Element> elementList) {
-        this.setElementType(elementType);
+    public ElementType(String elementTypeName, List<Element> elementList) {
+        this.setElementTypeName(elementTypeName);
         this.setElementList(elementList);
     }
 
@@ -49,12 +49,12 @@ public class ElementType {
         this.version = version;
     }
 
-    public String getElementType() {
-        return elementType;
+    public String getElementTypeName() {
+        return elementTypeName;
     }
 
-    public void setElementType(String elementType) {
-        this.elementType = elementType;
+    public void setElementTypeName(String elementType) {
+        this.elementTypeName = elementType;
     }
 
     public List<Element> getElementList() {

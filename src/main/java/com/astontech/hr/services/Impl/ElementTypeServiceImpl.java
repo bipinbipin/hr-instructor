@@ -42,6 +42,6 @@ public class ElementTypeServiceImpl implements ElementTypeService {
 
     @Override
     public ElementType findByElementType(String elementType) {
-        return elementTypeRepository.findByElementType(elementType);
+        return elementTypeRepository.findByElementTypeName(elementType);
     }
 }

@@ -8,8 +8,8 @@
 
     <%@include file="sidemenu.jsp" %>
 
-    <div id="main-wrapper" class="col-md-11 pull-right">
-        <div class="col-lg-8 col-md-7 col-sm-6">
+    <div id="main-wrapper" class="col-sm-10">
+        <div class="col-sm-12">
 
             <table class="table table-striped table-hover ">
                 <thead>
@@ -25,10 +25,10 @@
                         <c:forEach var="elementType" items="${elementTypeList}" >
                             <tr>
                                 <td>${elementType.id}</td>
-                                <td>${elementType.elementType}</td>
+                                <td>${elementType.elementTypeName}</td>
                                 <td>Elements go here!</td>
-                                <td>Edit</td>
-                                <td>Delete</td>
+                                <td><a href="/admin/element/edit/${elementType.id}">Edit</a></td>
+                                <td><a href="/admin/element/delete/${elementType.id}">Delete</a></td>
                             </tr>
                         </c:forEach>
                 </tbody>

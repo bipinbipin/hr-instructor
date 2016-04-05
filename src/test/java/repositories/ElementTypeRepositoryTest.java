@@ -59,13 +59,13 @@ public class ElementTypeRepositoryTest {
     @Test
     public void testFindByElementTypeName() {
 //        ElementType elementType = buildElementType();
-        elementType.setElementType("Laptop");
+        elementType.setElementTypeName("Laptop");
 
         elementTypeRepository.save(elementType);
 
-        ElementType foundElementType = elementTypeRepository.findByElementType("Laptop");
-        assertEquals("Laptop", foundElementType.getElementType());
-        assertNotEquals("Phones", foundElementType.getElementType());
+        ElementType foundElementType = elementTypeRepository.findByElementTypeName("Laptop");
+        assertEquals("Laptop", foundElementType.getElementTypeName());
+        assertNotEquals("Phones", foundElementType.getElementTypeName());
 
 
 

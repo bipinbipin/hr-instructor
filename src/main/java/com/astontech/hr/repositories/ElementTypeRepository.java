@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface ElementTypeRepository extends CrudRepository<ElementType, Integer> {
 
-    ElementType findByElementType(String elementType);
+    ElementType findByElementTypeName(String elementType);
 }
