@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/com.astontech.hr.iml" filepath="$PROJECT_DIR$/com.astontech.hr.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../com.astontech.oop/common/common.iml" filepath="$PROJECT_DIR$/../com.astontech.oop/common/common.iml" />
     </modules>
   </component>
 </project>

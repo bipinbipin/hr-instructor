@@ -8,7 +8,6 @@ import com.astontech.hr.repositories.ElementTypeRepository;
 import com.astontech.hr.services.ElementService;
 import com.astontech.hr.services.ElementTypeService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
-import common.helpers.StringHelper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
