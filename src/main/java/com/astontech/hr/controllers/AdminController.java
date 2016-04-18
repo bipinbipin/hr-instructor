@@ -84,7 +84,13 @@ public class AdminController {
                                     @RequestParam("inputNewElement") String newElement) {
         //notes:    if newElement passed in, add it to list and save
         if(!newElement.equals("")) {
-            elementType.getElementList().add(new Element(newElement));
+            if(elementType.getElementList() == null){
+                List<Element> elementList = new ArrayList<Element>();
+                elementList.add(new Element(newElement));
+                elementType.setElementList(elementList);
+            } else {
+                elementType.getElementList().add(new Element(newElement));
+            }
         }
 
         for(int i = 0; i < elementType.getElementList().size(); i++) {

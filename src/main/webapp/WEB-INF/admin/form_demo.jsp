@@ -7,6 +7,7 @@
 <div class="container">
     <div class="col-lg-8 col-md-7 col-sm-6">
 
+        <c:set var="idx" value="0" scope="page" />
         <form:form class="form-horizontal" modelAttribute="formDemoVO" action="/admin/form_demo" method="post">
             <fieldset>
                 <legend>Form Input Demo</legend>
@@ -33,6 +34,22 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Nested CheckBox</label>
+                    <div class="col-lg-10">
+
+                        <c:forEach items="${formDemoVO.checkBoxList}"  var="chkbox">
+
+                            <label>
+                                <form:checkbox path="checkBoxList[${idx}].checkBox" value="${chkbox.checkBox}"></form:checkbox>${chkbox.checkBox}
+                            </label>
+
+                            <c:set var="idx" value="${idx + 1}" scope="page" />
+                        </c:forEach>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="textArea" class="col-lg-2 control-label">Textarea</label>
                     <div class="col-lg-10">

@@ -1,5 +1,6 @@
 package com.astontech.hr.controllers;
 
+import com.astontech.hr.domain.VO.CheckBox;
 import com.astontech.hr.domain.VO.FormDemoVO;
 import com.astontech.hr.repositories.FormDemoRepository;
 import org.apache.log4j.Logger;
@@ -27,7 +28,16 @@ public class FormDemoController {
 
     @RequestMapping(value = "admin/form_demo", method = RequestMethod.GET)
     public String formDemoGet(Model model) {
-        model.addAttribute("formDemoVO", new FormDemoVO());
+        FormDemoVO formDemoVO = new FormDemoVO();
+        List<CheckBox> checkBoxList = new ArrayList<CheckBox>();
+        checkBoxList.add(new CheckBox("Nested CheckBox 1"));
+        checkBoxList.add(new CheckBox("Nested CheckBox 2"));
+        checkBoxList.add(new CheckBox("Nested CheckBox 3"));
+        checkBoxList.add(new CheckBox("Nested CheckBox 4"));
+        checkBoxList.add(new CheckBox("Nested CheckBox 5"));
+        formDemoVO.setCheckBoxList(checkBoxList);
+
+        model.addAttribute("formDemoVO", formDemoVO);
 //        model.addAttribute("singleList", buildSingleDropdownList());
         return "admin/form_demo";
     }
@@ -39,6 +49,9 @@ public class FormDemoController {
         //convertCheckBoxes(formDemo);
         formDemo.convertCheckBoxArrayToValues();
         formDemoRepository.save(formDemo);
+
+        model.addAttribute("formDemoVO", new FormDemoVO());
+
         return "admin/form_demo";
     }
 

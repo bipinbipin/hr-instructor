@@ -6,8 +6,12 @@
 <script>
 
     $(document).ready(function() {
+
+        $('#successAlert').delay(10000).fadeOut(2000);
+        $('#warningAlert').delay(8000).fadeOut(2000);
+
         $('#fadeoutButton').click(function() {
-            $('#warningAlert').fadeOut("slow", function() {
+                $('#warningAlert').delay(2000).fadeOut("slow", function() {
 
             });
         });

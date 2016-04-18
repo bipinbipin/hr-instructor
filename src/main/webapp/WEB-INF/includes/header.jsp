@@ -6,6 +6,8 @@
 <html>
     <head>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <c:url value="/webjars/jquery/2.1.4/jquery.min.js" var="jquery" />
         <script src="${jquery}"></script>
         <c:url value="/webjars/bootstrap/3.3.4/js/bootstrap.js" var="bootstrap" />
@@ -26,3 +28,5 @@
         <title>Aston Technologies HR Application</title>
     </head>
     <body>
+
+        <div class="container">

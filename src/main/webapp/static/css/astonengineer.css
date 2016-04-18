@@ -6,3 +6,11 @@
     visibility:     visible;
 }
 
+.blueBackground {
+    background-color: #305F96;
+}
+
+.text-white {
+    color: white;
+    font-weight: bolder;
+}

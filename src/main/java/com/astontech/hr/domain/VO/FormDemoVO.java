@@ -3,6 +3,7 @@ package com.astontech.hr.domain.VO;
 import org.apache.log4j.Logger;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Bipin on 3/29/2016.
@@ -25,6 +26,9 @@ public class FormDemoVO {
 
     @Transient
     private String[] checkboxes;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<CheckBox> checkBoxList;
 
     private String checkboxVal;
 
@@ -131,5 +135,11 @@ public class FormDemoVO {
         this.checkboxVal = checkboxVal;
     }
 
+    public List<CheckBox> getCheckBoxList() {
+        return checkBoxList;
+    }
 
+    public void setCheckBoxList(List<CheckBox> checkBoxList) {
+        this.checkBoxList = checkBoxList;
+    }
 }
