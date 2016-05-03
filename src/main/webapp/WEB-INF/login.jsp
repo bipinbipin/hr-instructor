@@ -11,7 +11,7 @@
         <form id="form" action="<c:url value='/login.do'/>" method="POST">
 
             <c:if test="${not empty param.err}">
-                <div class="msg-container error">
+                <div class="msg-container error text-white">
                     <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
                 </div>
             </c:if>

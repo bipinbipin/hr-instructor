@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
+import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 
 /**
  * Created by Bipin on 3/24/2016.
@@ -17,13 +17,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    final static String AUTH_METHOD = "IN_MEMORY";
+    final static String AUTH_METHOD = "NONE";
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        if(AUTH_METHOD.equals("LDAP")){
+        if(AUTH_METHOD.equals("NONE")) {
 
-//            auth.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
+        } else if(AUTH_METHOD.equals("LDAP")){
+
+            auth.authenticationProvider(activeDirectoryLdapAuthenticationProvider());
 
         } else if(AUTH_METHOD.equals("IN_MEMORY")){
 
@@ -37,13 +39,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-        if(AUTH_METHOD.equals("LDAP")){
+        if(AUTH_METHOD.equals("NONE")) {
 
             httpSecurity
                     .authorizeRequests().antMatchers("/").permitAll()
+                    .and()
+                    .authorizeRequests().antMatchers("/console/**").permitAll();
+
+        } else if(AUTH_METHOD.equals("LDAP")){
+
+            httpSecurity
+                    .authorizeRequests().antMatchers("/static/**").permitAll()
+                    .and()
+                    .authorizeRequests().antMatchers("/login**").permitAll()
+                    .and()
+                    .authorizeRequests().antMatchers("/").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                    .formLogin()
+                    .formLogin().loginPage("/login").loginProcessingUrl("/login.do")
+                    .defaultSuccessUrl("/").failureUrl("/login?err=1")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
                     .and()
                     .logout()
                     .and()
@@ -72,14 +88,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Bean
-//    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-//        ActiveDirectoryLdapAuthenticationProvider authenticationProvider =
-//                new ActiveDirectoryLdapAuthenticationProvider("aston.prod.com", "ldap://10.162.249.30:389");
-//
-//        authenticationProvider.setConvertSubErrorCodesToExceptions(true);
-//        authenticationProvider.setUseAuthenticationRequestCredentials(true);
-//
-//        return authenticationProvider;
-//    }
+    @Bean
+    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
+        ActiveDirectoryLdapAuthenticationProvider authenticationProvider =
+                new ActiveDirectoryLdapAuthenticationProvider("aston.prod.com", "ldap://10.162.249.30:389");
+
+        authenticationProvider.setConvertSubErrorCodesToExceptions(true);
+        authenticationProvider.setUseAuthenticationRequestCredentials(true);
+
+        return authenticationProvider;
+    }
 }
