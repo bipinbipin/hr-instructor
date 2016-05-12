@@ -2,8 +2,10 @@ package com.astontech.hr.bootstrap;
 
 import com.astontech.hr.domain.Person;
 import com.astontech.hr.domain.Project;
+import com.astontech.hr.domain.User;
 import com.astontech.hr.repositories.PersonRepository;
 import com.astontech.hr.services.ProjectService;
+import com.astontech.hr.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -25,12 +27,23 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private UserService userService;
+
     private Logger log = Logger.getLogger(SeedData.class);
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         generatePersons();
         generateProjects();
+        generateUsers();
+    }
+
+    public void generateUsers() {
+        User user = new User();
+        user.setTheme("sandstone");
+        userService.saveUser(user);
+
     }
 
     public void generateProjects(){
