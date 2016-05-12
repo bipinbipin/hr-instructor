@@ -17,7 +17,7 @@ import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAu
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    final static String AUTH_METHOD = "NONE";
+    final static String AUTH_METHOD = "IN_MEMORY";
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -76,7 +76,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .and()
                             //custom login form
                     .formLogin().loginPage("/login").loginProcessingUrl("/login.do")
-                    .defaultSuccessUrl("/").failureUrl("/login?err=1")
+                    .defaultSuccessUrl("/", true).failureUrl("/login?err=1")
                     .usernameParameter("username")
                     .passwordParameter("password");
 

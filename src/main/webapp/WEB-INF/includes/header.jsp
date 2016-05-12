@@ -18,7 +18,7 @@
         <%--<c:url value="/webjars/bootstrap/3.3.4/css/bootstrap.min.css" var="bootstrap" />--%>
         <%--<link href="${bootstrap}" rel="stylesheet" media="screen"/>--%>
 
-        <c:url value="/static/css/bootstrap_paper.min.css" var="bootstrap_theme" />
+        <c:url value="/static/css/bootstrap_themes/bootstrap_${theme}.min.css" var="bootstrap_theme" />
         <link href="${bootstrap_theme}" rel="stylesheet" media="screen"/>
 
         <c:url value="/static/css/astonengineer.css" var="bootstrap_custom" />
