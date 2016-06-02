@@ -1,7 +1,7 @@
 package com.astontech.hr.configuration;
 
-import com.astontech.hr.domain.User;
-import com.astontech.hr.services.UserService;
+import com.astontech.hr.domain.GlobalParameters;
+import com.astontech.hr.services.GlobalParametersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 public class UserProfileInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
-    private UserService userService;
+    private GlobalParametersService globalParametersService;
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception {
 
         if(modelAndView != null) {
-            User user = userService.getUserById(1);
-            modelAndView.addObject("theme", user.getTheme());
+            GlobalParameters globalParameters = globalParametersService.getGlobalParametersById(1);
+            modelAndView.addObject("theme", globalParameters.getTheme());
         }
 
     }

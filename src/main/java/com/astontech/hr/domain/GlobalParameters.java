@@ -6,11 +6,10 @@ import javax.persistence.*;
  * Created by Bipin on 5/12/2016.
  */
 @Entity
-public class User {
+public class GlobalParameters {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "UserId")
     private Integer id;
 
     @Version
@@ -18,7 +17,7 @@ public class User {
 
     private String theme;
 
-    public User() {}
+    public GlobalParameters() {}
 
     public Integer getId() {
         return id;
