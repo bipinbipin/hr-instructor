@@ -46,7 +46,7 @@
 
 
         <!-- ============================================== -->
-        <!-- DATABASE DEPENDANCIES -->
+        <!-- DATABASE DEPENDENCIES -->
         <!-- ============================================== -->
         <dependency>
             <groupId>com.h2database</groupId>

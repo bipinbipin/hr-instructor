@@ -1,5 +1,6 @@
 package com.astontech.hr;
 
+import com.astontech.hr.configuration.TestComponent;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -40,7 +41,13 @@ public class Application {
     }
 
     public static void main(String[] args)  {
-        SpringApplication.run(Application.class, args);
+        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+
+        //Bean names created as lowercase of class name
+        TestComponent testComponent = (TestComponent) ctx.getBean("testComponent");
+
+        //now we have the component from the context we can call methods from within it.
+        testComponent.sayHello();
 
 //        System.out.println("Entering spring boot");
 //        ApplicationContext ctx = SpringApplication.run(Application.class, args);

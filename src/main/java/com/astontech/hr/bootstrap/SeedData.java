@@ -34,7 +34,7 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-//        generatePersons();
+        generatePersons();
 //        generateProjects();
 //        generateUsers();
     }

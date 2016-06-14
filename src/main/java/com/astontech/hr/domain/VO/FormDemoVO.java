@@ -40,7 +40,6 @@ public class FormDemoVO {
 
     public FormDemoVO() {}
 
-
     public void convertCheckBoxArrayToValues() {
         try {
             checkboxVal = "";

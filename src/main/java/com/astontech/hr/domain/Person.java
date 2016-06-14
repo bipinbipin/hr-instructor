@@ -1,11 +1,14 @@
 package com.astontech.hr.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 /**
  * Created by Bipin on 3/25/2016.
  */
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
 
     @Id
