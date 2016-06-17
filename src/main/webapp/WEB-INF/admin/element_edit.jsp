@@ -67,7 +67,7 @@
 
                 <div class="row">
                     <div class="form-group">
-                        <label for="inputElement" class="col-sm-3 control-label">Element</label>
+                        <label for="inputNewElement" class="col-sm-3 control-label">Element</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="inputNewElement"/>
                         </div>
