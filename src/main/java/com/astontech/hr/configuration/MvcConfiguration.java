@@ -17,13 +17,13 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
-    @Autowired
-    UserProfileInterceptor userProfileInterceptor;
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userProfileInterceptor);
-    }
+//    @Autowired
+//    UserProfileInterceptor userProfileInterceptor;
+//
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(userProfileInterceptor);
+//    }
 
     @Bean
     public ViewResolver getViewResolver() {

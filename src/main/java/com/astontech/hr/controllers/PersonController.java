@@ -22,27 +22,27 @@ public class PersonController {
     @RequestMapping(value = "/person")
     public String getPersonFromService(Model model) {
 
-        // Get a single object
-        RestTemplate restTemplate = new RestTemplate();
-        Person person = restTemplate.getForObject("http://localhost:8080/people/1", Person.class);
-
-        model.addAttribute("firstName", person.getLastName());
-
-
-        // Get a collection of objects
-        RestTemplate collectionTemplate = new RestTemplate();
-
-        Person[] personArray = collectionTemplate.getForObject("http://localhost:8080/rest/person/list", Person[].class);
-        List<Person> personList = Arrays.asList(personArray);
-
-//        ResponseEntity<List<Person>> personListResponse =
-//                collectionTemplate.exchange("http://localhost:8080/people",
-//                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>() {
-//                });
-//        List<Person> personList = personListResponse.getBody();
-
-
-        model.addAttribute("personList", personList.get(1).getFirstName());
+//        // Get a single object
+//        RestTemplate restTemplate = new RestTemplate();
+//        Person person = restTemplate.getForObject("http://localhost:8080/people/1", Person.class);
+//
+//        model.addAttribute("firstName", person.getLastName());
+//
+//
+//        // Get a collection of objects
+//        RestTemplate collectionTemplate = new RestTemplate();
+//
+//        Person[] personArray = collectionTemplate.getForObject("http://localhost:8080/rest/person/list", Person[].class);
+//        List<Person> personList = Arrays.asList(personArray);
+//
+////        ResponseEntity<List<Person>> personListResponse =
+////                collectionTemplate.exchange("http://localhost:8080/people",
+////                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>() {
+////                });
+////        List<Person> personList = personListResponse.getBody();
+//
+//
+//        model.addAttribute("personList", personList.get(1).getFirstName());
 
         return "person";
     }

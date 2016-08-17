@@ -1,47 +1,23 @@
 package com.astontech.hr.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Bipin on 3/25/2016.
  */
 @Entity
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "EmployeeId")
-    private Integer id;
-
-    @Version
-    private Integer version;
-
-    @OneToOne
-    @JoinColumn(name = "PersonId")
-    private Person person;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Employee extends Person {
 
     private String background;
 
-
+    @OneToMany
+    private List<Project> projects;
 
     public Employee() {}
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 
     public String getBackground() {
         return background;
@@ -51,11 +27,11 @@ public class Employee {
         this.background = background;
     }
 
-    public Person getPerson() {
-        return person;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 }

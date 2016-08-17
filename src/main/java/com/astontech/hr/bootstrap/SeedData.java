@@ -1,9 +1,11 @@
 package com.astontech.hr.bootstrap;
 
+import com.astontech.hr.domain.Employee;
 import com.astontech.hr.domain.GlobalParameters;
 import com.astontech.hr.domain.Person;
 import com.astontech.hr.domain.Project;
 import com.astontech.hr.repositories.PersonRepository;
+import com.astontech.hr.services.EmployeeService;
 import com.astontech.hr.services.GlobalParametersService;
 import com.astontech.hr.services.ProjectService;
 import org.apache.log4j.Logger;
@@ -28,13 +30,17 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     private ProjectService projectService;
 
     @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
     private GlobalParametersService globalParametersService;
 
     private Logger log = Logger.getLogger(SeedData.class);
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        generatePersons();
+//        generateEmployees();
+//        generatePersons();
 //        generateProjects();
 //        generateUsers();
     }
@@ -86,6 +92,35 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
         personList.add(new Person("Vasant", "Butala"));
 
         personRepository.save(personList);
+    }
+
+    public void generateEmployees() {
+
+        Employee employee = new Employee();
+        employee.setFirstName("Dan");
+        employee.setLastName("Simmer");
+        employee.setBackground("Dot Net Developer");
+        employeeService.saveEmployee(employee);
+
+        Employee employee1 = new Employee();
+        employee1.setFirstName("Tony");
+        employee1.setLastName("Morano");
+        employee1.setBackground("Aston Trainer");
+        employeeService.saveEmployee(employee1);
+
+        Employee employee2 = new Employee();
+        employee2.setFirstName("Sean");
+        employee2.setLastName("Nilsen");
+        employee2.setBackground("Java Principle");
+        employeeService.saveEmployee(employee2);
+
+        Employee employee3 = new Employee();
+        employee3.setFirstName("Bob");
+        employee3.setLastName("Dapolapolis");
+        employee3.setBackground("dot Java Developer");
+        employeeService.saveEmployee(employee3);
+
+
     }
 
 }

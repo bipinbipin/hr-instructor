@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @ControllerAdvice
 public final class GlobalController {
 
-//    @Value("${design.bootstrap.theme}")
-//    private String themeName;
-//
-//    @ModelAttribute
-//    public void addAttributes(Model model) {
-//        model.addAttribute("theme", themeName);
-//    }
+    @Value("${design.bootstrap.theme}")
+    private String themeName;
+
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("theme", themeName);
+    }
 
 }
