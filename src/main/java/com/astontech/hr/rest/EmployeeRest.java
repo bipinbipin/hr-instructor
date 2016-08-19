@@ -2,6 +2,7 @@ package com.astontech.hr.rest;
 
 import com.astontech.hr.domain.Employee;
 import com.astontech.hr.services.EmployeeService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/employee")
 public class EmployeeRest {
+
+    private Logger log = Logger.getLogger(EmployeeRest.class);
 
     //region VIDEO 1
 
@@ -35,6 +38,20 @@ public class EmployeeRest {
     public Employee employeeSave(@RequestBody Employee employee) {
         return employeeService.saveEmployee(employee);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public Boolean employeeDelete(@PathVariable int id) {
+        boolean result = false;
+        try {
+            employeeService.deleteEmployee(id);
+            result = true;
+        } catch (Exception ex) {
+            log.info(ex);
+        }
+
+        return result;
+    }
+
 
     //endregion
 }
