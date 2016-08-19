@@ -35,7 +35,7 @@ public class EmployeeRest {
     //region VIDEO 2
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Employee employeeSave(@RequestBody Employee employee) {
+    public Employee employeeSave(@ModelAttribute("employee") Employee employee) {
         return employeeService.saveEmployee(employee);
     }
 
