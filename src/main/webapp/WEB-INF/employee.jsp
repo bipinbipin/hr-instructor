@@ -28,6 +28,9 @@
                 <form class="form-horizontal">
                     <fieldset>
 
+                        <hidden id="employeeId" />
+                        <hidden id="employeeVersion"/>
+
                         <div class="form-group">
                             <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
                             <div class="col-lg-10">
@@ -60,10 +63,25 @@
     </div>
 </div>
 
+<div id="employeeDeleteModal"class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Delete Employee</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the Employee Record?
+                (This cannot be undone!)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script>
-
-</script>
 
 <table id="employee-table" class="table table-striped table-hover ">
     <thead>

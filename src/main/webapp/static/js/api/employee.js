@@ -33,7 +33,7 @@ function buildTable() {
                             "<td>" + single.background + "</td>" +
                             "<td>" + "<select><option>(Select Project)</option></select>" + "</td>" +
                             "<td>" + "<button onclick='editEmployee(" + single.id + ")'>Edit</button>" + "</td>" +
-                            "<td>" + "<button onclick='deleteEmployee(" + single.id + ")'>Delete</button>" + "</td>" +
+                            "<td>" + "<button onclick='openDeleteConfirmationModal(" + single.id + ")'>Delete</button>" + "</td>" +
 
                         "</tr>")
 
@@ -67,11 +67,56 @@ function saveEmployee() {
         dataType: "json",
         success: function() {
             window.location.reload();
+        },
+        error: function() {
+            alert("Failed To Insert Employee!")
         }
     })
 }
 
 function editEmployee(id) {
 
+    //retrieve employee with passed in id
+    $.getJSON('/api/employee/' + id, {
+        ajax: 'true'
+    }, function (employee) {
+        console.log(employee)
 
+        //populate values (hidden and input)
+        $('#employeeId').val(employee.id);
+        $('#employeeVersion').val(employee.version);
+        $('#inputFirstName').val(employee.firstName);
+        $('#inputLastName').val(employee.lastName);
+        $('#inputBackground').val(employee.background);
+
+        //open modal
+        $('#employeeModal').modal('show');
+    });
+
+}
+
+function openDeleteConfirmationModal(id) {
+
+    //set the onclick of the delete button
+    $('#confirmDelete').click(function() {
+        deleteEmployee(id);
+
+    })
+
+    //open modal
+    $('#employeeDeleteModal').modal('show');
+
+}
+
+function deleteEmployee(id) {
+
+    $.ajax({
+        type: "delete",
+        url: "/api/employee/" + id,
+        async: true,
+        dataType: "json",
+        success: function () {
+            window.location.reload();
+        }
+    })
 }
